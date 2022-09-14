@@ -12,20 +12,18 @@ permissions:
   contents: write
 
 jobs:
-  rspec:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby-version: ['2.6', '2.7', '3.0']
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/setup-ruby@v1
     - name: API Kin Automation
-      uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
       with:
-        ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true
+          ruby-version: 2.6.6
+    - name: Run bundle install
+      run:  gem install bundler
+            bundle install --jobs 4 --retry 3
     - name: Run tests
-      # load env varibles from secrets
       env:
         KIN_API_KEY: ${{ secrets.PASSWORD }}
         KIN_API_SECRET: ${{ secrets.USERNAME }}
