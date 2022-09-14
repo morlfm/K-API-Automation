@@ -25,7 +25,7 @@ jobs:
     - name: Run bundle install
       run:  gem install bundler | bundle install --jobs 4 --retry 3
     - name: Echo
-      run: echo ${{ secrets.PASSWORD }}
+      run: gem install nokogiri
     - name: Run tests
       env:
         PASSWORD: ${{ secrets.PASSWORD }}
