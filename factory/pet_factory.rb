@@ -1,3 +1,6 @@
+require 'factory_bot'
+require 'faker'
+
 class RegisterPet; end
 
 FactoryBot.define do
@@ -22,5 +25,6 @@ FactoryBot.define do
       membership { true }
       services { ['walk'] }
     end
+    initialize_with { new(attributes) }
   end
 end
