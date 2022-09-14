@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-ruby@v1
+    - uses: actions/setup-ruby@v3
       with:
           ruby-version: 2.7
           bundler-cache: true
@@ -24,8 +24,6 @@ jobs:
       run: gem install rspec
     - name: Run bundle install
       run:  gem install bundler | bundle install --jobs 4 --retry 3
-    - name: Echo
-      run: gem install nokogiri
     - name: Run tests
       env:
         PASSWORD: ${{ secrets.PASSWORD }}

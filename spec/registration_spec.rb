@@ -7,6 +7,7 @@ describe 'Registration' do
   subject { Pet.new }
 
   context 'GET', :get do
+
     it 'should return all pets' do
       response = subject.get_pets
       expect(response.code).to eq 200
@@ -24,6 +25,7 @@ describe 'Registration' do
   end
 
   context 'POST', :post do
+
     it 'should create a new pet' do
       body = {
         "pet_owner": "Mike #{Faker::Name.last_name}",
@@ -62,6 +64,7 @@ describe 'Registration' do
   end
 
   context 'PUT', :update do
+    
     it 'should update a pet name ' do
       body = {
         "pet_name": "Niko #{Faker::Name.last_name}"
@@ -93,6 +96,7 @@ describe 'Registration' do
   end
 
   context 'DELETE', :delete do
+
     it 'should delete a pet' do
       pets_registered = subject.get_pets
       response = subject.delete_pet(pets_registered[0]['id'])
