@@ -24,8 +24,8 @@ jobs:
       run:  gem install bundler | bundle install --jobs 4 --retry 3
     - name: Run tests
       env:
-        KIN_API_KEY: ${{ secrets.PASSWORD }}
-        KIN_API_SECRET: ${{ secrets.USERNAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        USERNAME: ${{ secrets.USERNAME }}
       run: bundle exec rspec -f j -o tmp/rspec_results.json -f p
     - name: Upload results - Report
       uses: SonicGarden/rspec-report-action@v2
