@@ -20,6 +20,8 @@ jobs:
       with:
           ruby-version: 2.7
           bundler-cache: true
+    - name: Install rspec
+      run: gem install rspec
     - name: Run bundle install
       run:  gem install bundler | bundle install --jobs 4 --retry 3
     - name: Run tests
