@@ -24,6 +24,8 @@ jobs:
       run: gem install rspec
     - name: Run bundle install
       run:  gem install bundler | bundle install --jobs 4 --retry 3
+    - name: Echo
+      run: echo ${{ secrets.PASSWORD }}
     - name: Run tests
       env:
         PASSWORD: ${{ secrets.PASSWORD }}

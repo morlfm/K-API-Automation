@@ -101,6 +101,7 @@ DEPENDENCIES
   factory_bot
   faker
   httparty
+  nokogiri
   pry-byebug
   rake
   require_all
