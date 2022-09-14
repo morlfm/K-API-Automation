@@ -21,8 +21,7 @@ jobs:
       with:
           ruby-version: 2.6.6
     - name: Run bundle install
-      run:  gem install bundler
-            bundle install --jobs 4 --retry 3
+      run:  gem install bundler | bundle install --jobs 4 --retry 3
     - name: Run tests
       env:
         KIN_API_KEY: ${{ secrets.PASSWORD }}
