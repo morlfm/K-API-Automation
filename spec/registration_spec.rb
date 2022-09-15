@@ -22,6 +22,13 @@ describe 'Registration' do
       expect(response.code).to eq 200
       expect(response['pet_owner']).to include 'Mike'
     end
+
+    it 'should not return a single pet due to non-existent ID' do
+      response = subject.get_pet('99999')
+      expect(response.code).to eq 404
+      expect(response.message).to eq 'Not Found'
+    end
+
   end
 
   context 'POST', :post do
@@ -104,8 +111,8 @@ describe 'Registration' do
       expect(response.message).to eq 'No Content'
     end
 
-    it 'should not delete a pet without ID' do
-      response = subject.delete_pet('')
+    it 'should not delete a pet passing invalid ID type' do
+      response = subject.delete_pet('xsasdad')
       expect(response.code).to eq 404
       expect(response.message).to eq 'Not Found'
     end
