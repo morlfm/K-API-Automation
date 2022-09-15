@@ -64,7 +64,7 @@ describe 'Registration' do
   end
 
   context 'PUT', :update do
-    
+
     it 'should update a pet name ' do
       body = {
         "pet_name": "Niko #{Faker::Name.last_name}"
